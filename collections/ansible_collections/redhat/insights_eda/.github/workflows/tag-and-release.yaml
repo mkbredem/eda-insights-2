@@ -1,0 +1,107 @@
+name: Tag on version change
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  version_tag:
+    name: Version tag if not exist
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tagging.outputs.version }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Tag if not exist
+        id: tagging
+        run: |
+          version=$(grep -P -o "(?<=^version: )\d+\.\d+\.\d+" galaxy.yml)
+          tag=v${version}
+          git fetch --tags
+          if [[ "$(git tag -l "${tag}")" == "" ]]; then
+            git tag "${tag}"
+            git push origin "${tag}"
+            echo "version=$version" >> $GITHUB_OUTPUT
+          else
+            echo "Tag exist, skipping release"
+          fi
+  release:
+    name: Release if tagged
+    needs: version_tag
+    if: needs.version_tag.outputs.version != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          path: ansible_collections/redhatinsights/eda
+
+      - name: Install ansible-base and galaxy-importer
+        run: pip install ansible galaxy-importer
+
+      - name: Run sanity tests
+        working-directory: ansible_collections/redhatinsights/eda
+        run: ansible-test sanity
+
+      - name: Build
+        working-directory: ansible_collections/redhatinsights/eda
+        run: ansible-galaxy collection build
+
+      - name: Run import checks
+        working-directory: ansible_collections/redhatinsights/eda
+        run:
+          python -m galaxy_importer.main redhatinsights-eda-${{ needs.version_tag.outputs.version }}.tar.gz
+
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: redhatinsights-eda-${{ needs.version_tag.outputs.version }}.tar.gz
+          path: ansible_collections/redhatinsights/eda/redhatinsights-eda-${{ needs.version_tag.outputs.version }}.tar.gz
+
+      - name: Publish to Galaxy
+        working-directory: ansible_collections/redhatinsights/eda
+        run:
+          ansible-galaxy collection publish --api-key="${{ secrets.ANSIBLE_GALAXY_APIKEY }}" redhatinsights-eda-${{ needs.version_tag.outputs.version }}.tar.gz
+
+      - name: Build for Automation Hub
+        working-directory: ansible_collections/redhatinsights/eda
+        run: ansible-playbook productize.yml
+
+      - name: Run import checks for hub collection
+        working-directory: ansible_collections/redhatinsights/eda
+        run:
+          python -m galaxy_importer.main redhat-insights_eda-${{ needs.version_tag.outputs.version }}.tar.gz
+
+  build_for_hub:
+    name: Build for Automation Hub
+    needs: [version_tag, release]
+    if: needs.version_tag.outputs.version != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          path: ansible_collections/redhatinsights/eda
+
+      - name: Install ansible-base and galaxy-importer
+        run: pip install ansible galaxy-importer
+
+      - name: Install ansible.posix
+        run: ansible-galaxy collection install ansible.posix
+
+      - name: Build for Automation Hub
+        working-directory: ansible_collections/redhatinsights/eda
+        run: ansible-playbook productize.yml
+
+      - name: Run import checks for hub collection
+        working-directory: ansible_collections/redhatinsights/eda
+        run:
+          python -m galaxy_importer.main redhat-insights_eda-${{ needs.version_tag.outputs.version }}.tar.gz
+
+      - name: Upload build for hub
+        uses: actions/upload-artifact@v3
+        with:
+          name: redhat-insights_eda-${{ needs.version_tag.outputs.version }}.tar.gz
+          path: ansible_collections/redhatinsights/eda/redhat-insights_eda-${{ needs.version_tag.outputs.version }}.tar.gz

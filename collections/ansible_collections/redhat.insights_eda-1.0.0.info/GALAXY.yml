@@ -1,0 +1,45 @@
+download_url: https://console.redhat.com/api/automation-hub/v3/plugin/ansible/content/published/collections/artifacts/redhat-insights_eda-1.0.0.tar.gz
+format_version: 1.0.0
+name: insights_eda
+namespace: redhat
+server: https://console.redhat.com/api/automation-hub/content/published/
+signatures:
+- pubkey_fingerprint: 39B5D759361A97464C564A8FE1A4BD708A828AAD
+  pulp_created: '2023-06-23T15:56:49.842140Z'
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+    Version: GnuPG v1
+
+
+    iQIVAwUAZJXAv+GkvXCKgoqtAQiDww//Y7W/g0g2vdWjXxWi7/qLYPSPRCD2N9rW
+
+    RDpsj5PSgs7ElHRH9J6fxyoIHbDS3dyIksHvApRCdBZUvX+j9R8hCAmbXiwk7wOe
+
+    ue4AshWTzbB5AID4azybdhf7a+XLsx2nfsJYEZEAwENrWtr2TYsX6mUi664C1OxV
+
+    F1mK+6jaNHtCAT8QPRuEB7n+AtVAfaMBeOXd9deM6p8BBINBw/3mpquKl9FB3vlo
+
+    3DaJtkZ3LdGXwpUJ/hXRxT8Jsl6YHMYei++bK9eezmR7r9ziMpMVdu0/4hB1q4JM
+
+    JdXXn/SPlAkzIm+U8GjNs9FxG1NlNq3A4oFBvvzOuQIlUOghDv96RPRYK6hvpL2Y
+
+    IYtkWzcR2XfTdbASYrn0koLJWv109BJSGlaup4ZEUp7GAhur5B6YZsYjij9rvoNG
+
+    +hW2tD1Raob/Sotuy3ssHFL8T32qu1hI9qQIH3P7enTZxDCRgG7M29pfIdSOCLcU
+
+    DCGNzo+zIkOWmYwnQ+MmeTSPHXAwzbkOaXkdi54zoStvCSk/tpAaw7fLyiKRdabJ
+
+    CZ8sR8/dfHS8HTC6PPFeoE5jhSyX3WuFyULalbev3hpm99YadnqpB/ETnkmbk5q/
+
+    KRgQrLDnNl/MaNXk6vjnh0s0AW5kWrWQWBscZcRJNmfGnPPgoZUKK5IXbB5AiFGy
+
+    4UHbcjKqU6U=
+
+    =cWH+
+
+    -----END PGP SIGNATURE-----
+
+'
+  signing_service: null
+version: 1.0.0
+version_url: /api/automation-hub/content/published/v3/plugin/ansible/content/published/collections/index/redhat/insights_eda/versions/1.0.0/

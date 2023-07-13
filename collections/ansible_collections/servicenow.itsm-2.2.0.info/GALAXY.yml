@@ -1,0 +1,45 @@
+download_url: https://console.redhat.com/api/automation-hub/v3/plugin/ansible/content/published/collections/artifacts/servicenow-itsm-2.2.0.tar.gz
+format_version: 1.0.0
+name: itsm
+namespace: servicenow
+server: https://console.redhat.com/api/automation-hub/content/published/
+signatures:
+- pubkey_fingerprint: 39B5D759361A97464C564A8FE1A4BD708A828AAD
+  pulp_created: '2023-05-15T20:42:55.743607Z'
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+    Version: GnuPG v1
+
+
+    iQIVAwUAZGKZTeGkvXCKgoqtAQgOrQ/9GOWkKww+x/J1E1pgUzNxQ3KEzmSJMQUh
+
+    6sI3TLPIsBePKPC75jbxayMyOnX6GHqWnshDQ0R63DK9hNJyjPQvfltlrXlNi1D4
+
+    NCwFfqukFtBvKT0gFxj6FzAMqOK0HsOeZjNJ0r6GNe6TAeWt9gYSukuYNFLMFuxH
+
+    UciUvF+U8s9O7OnNsN6llW/MnH2opoikyZt/lhMVL7Afj+yuaPI0lClx4J/Qpl42
+
+    o2DXgJMAahoUJYfgvJacVEG+xED43Y/i8gFrVlwi596VCOYL6Vi7g7yP6yXJKvvO
+
+    qb9eRAYPWafWFPPYTWtoZ6P1HxdBluac3yv2ejDTHjMakcaeDdXoy81lKgMVnGwu
+
+    rF0o8v0cai0A1I9ERv5bn39L0hI/wH5SlkPtHw6rn0IjfqCNxfNGFmd9uC5QG+hD
+
+    Ht3UMxxOFQIV7K1J66ddPd3NJhsrlTgBmfvEI/jfS0sLsUiHyB4PzCqZqD+92fLK
+
+    lnTAr7n2y09rXyvcnSvFLX5Gu9vb2JE0Z4myEYquSjCPPD5Jr7B4uW08zxZsZso6
+
+    u082uA2XoRaDgAGaOWQ+zkiY54kKdEFmf/mdJX11ISP/9/YSxbvzaXlYroH6yefY
+
+    qrY9xi7+PNg2dSHv0SZJdAIQuIIVzzf8jUZVO/XbMst1JQc5J7NiFuLAi51yLeAr
+
+    ZquTyEH7/9w=
+
+    =Edjo
+
+    -----END PGP SIGNATURE-----
+
+'
+  signing_service: null
+version: 2.2.0
+version_url: /api/automation-hub/content/published/v3/plugin/ansible/content/published/collections/index/servicenow/itsm/versions/2.2.0/

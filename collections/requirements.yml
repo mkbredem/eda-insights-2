@@ -1,0 +1,7 @@
+---
+collections:
+  - name: ansible.eda
+  - name: community.general
+  - name: redhat.insights_eda
+  - name: redhatinsights.eda
+  - name: servicenow.itsm

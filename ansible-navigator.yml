@@ -1,0 +1,5 @@
+ansible-navigator:
+  execution-environment:
+    image: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8
+    pull:
+      policy: missing

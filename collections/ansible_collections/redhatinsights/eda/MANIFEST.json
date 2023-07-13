@@ -1,0 +1,35 @@
+{
+ "collection_info": {
+  "namespace": "redhatinsights",
+  "name": "eda",
+  "version": "1.0.0",
+  "authors": [
+   "vkrizan@redhat.com"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "infrastructure",
+   "monitoring",
+   "security",
+   "tools"
+  ],
+  "description": "Event-Driven Ansible for Red Hat Insights",
+  "license": [
+   "Apache-2.0"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "https://github.com/RedHatInsights/ansible-collections-eda",
+  "documentation": "https://github.com/RedHatInsights/ansible-collections-eda",
+  "homepage": "https://console.redhat.com/insights/",
+  "issues": "https://github.com/RedHatInsights/ansible-collections-eda/issues"
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "c3b04efec9fba0977ad0f49c5f7116d5ac061a1270c0b00c51faf1afc431680e",
+  "format": 1
+ },
+ "format": 1
+}

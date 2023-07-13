@@ -1,0 +1,7 @@
+---
+- name: simple debug test
+  hosts: localhost
+
+  tasks:
+    - debug:
+        msg: "event.payload: {{ event.payload }}"

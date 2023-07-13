@@ -1,0 +1,9 @@
+-r requirements.txt
+pytest
+pytest-asyncio
+pytest-check
+pytest-timeout
+aiohttp
+ansible
+requests
+ansible-rulebook

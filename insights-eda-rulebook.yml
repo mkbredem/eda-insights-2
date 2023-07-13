@@ -1,0 +1,15 @@
+---
+- name: Listen for Red Hat Insights events
+  hosts: localhost
+  sources:
+    - redhatinsights.eda.insights:
+        host: 0.0.0.0
+        port: 5000
+  rules:
+    - name: Match Malware detected-malware event
+      condition:
+        event.payload.application == "malware-detection"
+        and event.payload.event_type == "detected-malware"
+      action:
+	debug:
+	  msg: "event.payload: {{ event.payload }}"
