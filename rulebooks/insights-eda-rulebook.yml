@@ -11,8 +11,8 @@
         event.payload.application == "malware-detection"
         and event.payload.event_type == "detected-malware"
       action:
-	debug:
-	  msg: "event.payload: {{ event.payload }}"
+	run_playbook:
+	  name: simple.yml
 
 
 
