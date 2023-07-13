@@ -1,0 +1,19 @@
+---
+version: 3
+
+images:
+  base_image:
+    name: 'registry.redhat.io/ansible-automation-platform-24/de-supported-rhel8'
+
+dependencies:
+  galaxy:
+    collections:
+      - name: ansible.eda
+      - name: community.general
+      - name: redhat.insights_eda
+      - name: redhatinsights.eda
+      - name: servicenow.itsm
+#    python:
+#        - pywinrm
+#    system:
+#        - iputils [platform:rpm]
