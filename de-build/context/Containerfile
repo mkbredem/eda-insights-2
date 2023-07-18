@@ -1,4 +1,4 @@
-ARG EE_BASE_IMAGE=registry.redhat.io/ansible-automation-platform-24/de-supported-rhel8
+ARG EE_BASE_IMAGE=registry.redhat.io/ansible-automation-platform-24/de-minimal-rhel8
 ARG EE_BUILDER_IMAGE=registry.redhat.io/ansible-automation-platform-24/ansible-builder-rhel8
 
 FROM $EE_BASE_IMAGE as galaxy
@@ -16,7 +16,8 @@ FROM $EE_BUILDER_IMAGE as builder
 
 COPY --from=galaxy /usr/share/ansible /usr/share/ansible
 
-RUN ansible-builder introspect --sanitize --write-bindep=/tmp/src/bindep.txt --write-pip=/tmp/src/requirements.txt
+ADD _build/bindep.txt bindep.txt
+RUN ansible-builder introspect --sanitize --user-bindep=bindep.txt --write-bindep=/tmp/src/bindep.txt --write-pip=/tmp/src/requirements.txt
 RUN assemble
 
 FROM $EE_BASE_IMAGE
