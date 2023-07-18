@@ -1,5 +1,5 @@
 ---
-- name: Ruleset - Listen for Red Hat Insights events
+- name: Ruleset - Listen for Red Hat Insights events - call jt
   hosts: localhost
   sources:
     - redhatinsights.eda.insights:
