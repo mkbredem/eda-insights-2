@@ -13,8 +13,5 @@
         event.payload.application == "malware-detection"
         and event.payload.event_type == "detected-malware"
       action:
-        run_job_template:
-          name: "EDA - Create Malware Incident"
-          organization: Default
-          job_args: 
-            extra_vars: "{{ event.payload }}"
+        debug:
+          msg: "event.payload: {{ event.payload }}"
