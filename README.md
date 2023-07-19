@@ -1,1 +1,2 @@
 # eda-insights-2
+rulebooks, playbooks, and custom decision environment used to monitor Red Hat Enterprise Linux Insights for malware detection (the EDA source).  Once detected by Evend Driven Automation, a run_job_template action is used to launch an Automation Controller job template to create a service now incident.
