@@ -17,6 +17,7 @@
           name: "EDA - Create Malware Incident"
           organization: Default
           job_args: 
-            extra_vars: "{{ event.payload }}"
+            extra_vars: 
+              eda_payload: "{{ event.payload }}"
           retries: 2
           delay: 10
