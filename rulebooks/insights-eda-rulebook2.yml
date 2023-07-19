@@ -16,6 +16,8 @@
         run_job_template:
           name: "EDA - Create Malware Incident"
           organization: Default
+          set_facts:
+            test2: hola
           job_args: 
             extra_vars: 
               test: hello
