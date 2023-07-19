@@ -18,3 +18,5 @@
           organization: Default
           job_args: 
             extra_vars: "{{ event.payload }}"
+          retries: 2
+          delay: 10
