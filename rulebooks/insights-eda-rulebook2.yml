@@ -18,6 +18,7 @@
           organization: Default
           job_args: 
             extra_vars: 
-              eda_payload: "{{ event.payload }}"
+              test: hello
+              # eda_payload: "{{ event.payload }}"
           retries: 2
           delay: 10
