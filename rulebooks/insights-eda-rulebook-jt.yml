@@ -13,6 +13,6 @@
       action:
         run_job_template:
           name: "EDA - Create Malware Incident"
-          organization: Default
+          organization: ACME Corp
           job_args: 
             extra_vars: "{{ event.payload }}"
