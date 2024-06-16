@@ -1,10 +1,26 @@
 ---
-version: 1
+version: 3
 
-build_arg_defaults:
-  EE_BASE_IMAGE: "registry.redhat.io/ansible-automation-platform-24/de-minimal-rhel8"
-  EE_BUILDER_IMAGE: "registry.redhat.io/ansible-automation-platform-24/ansible-builder-rhel8"
+images:
+  base_image:
+    name: 'registry.redhat.io/ansible-automation-platform-24/de-supported-rhel8:latest'
 
 dependencies:
-  galaxy: requirements.yml
-  system: bindep.txt
+  galaxy:
+    collections:
+      - name: ansible.eda
+      - name: community.general
+#      - name: redhat.insights_eda
+      - name: redhatinsights.eda
+      - name: servicenow.itsm
+
+#    python:
+#        - pywinrm
+#    system:
+#        - iputils [platform:rpm]
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '--ignore-certs'

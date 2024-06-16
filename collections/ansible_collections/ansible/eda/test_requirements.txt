@@ -1,8 +1,0 @@
--r requirements.txt
-pytest
-asyncmock
-pytest-asyncio
-pytest-timeout
-ansible
-requests
-ansible-rulebook

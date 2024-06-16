@@ -1,3 +1,0 @@
-
-# EDA Event Schemas
-

@@ -1,8 +1,0 @@
-aiobotocore
-aiohttp
-aiokafka
-asyncio
-asyncmock
-azure-servicebus
-dpath
-pytest-asyncio
