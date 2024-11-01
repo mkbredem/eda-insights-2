@@ -18,3 +18,8 @@
           organization: Default
           job_args: 
             extra_vars: "{{ event.payload }}"
+    - name: Capture and Log Message
+      condition: event.message is defined
+      actions:
+        - debug:
+            msg: "Received message: {{ event.message }}"
