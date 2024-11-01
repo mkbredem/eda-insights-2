@@ -23,3 +23,8 @@
       actions:
         - debug:
             msg: "Received message: {{ event.message }}"
+    - name: Always Runs
+      condition: True
+      actions:
+        - debug:
+            msg: "You will always see me {{ event.message }}"
