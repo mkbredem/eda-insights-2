@@ -18,13 +18,28 @@
           organization: Default
           job_args: 
             extra_vars: "{{ event.payload }}"
+
     - name: Capture and Log Message
-      condition: event.message is defined
+      condition: event.payload.message is defined
       actions:
         - debug:
             msg: "Received message: {{ event.message }}"
+
     - name: Always Runs
       condition: True
       actions:
         - debug:
             msg: "You will always see me {{ event.payload }}"
+
+##Here is the bash script that is run from the host:
+#
+##!/bin/bash
+#
+## Get the server's hostname
+#target_host=$(curl -s http://169.254.169.254/latest/meta-data/public-hostname)
+#
+## Set the message variable
+#message="increase storage"
+#
+## Execute the curl command with the variables
+#curl -v -k -H 'Content-Type: application/json' -d "{\"message\": \"$message\", \"target_host\": \"$target_host\"}" <eda controller fqdn>:5000/endpoint
