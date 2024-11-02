@@ -31,11 +31,12 @@
         - debug:
             msg: "You will always see me {{ event.payload }}"
 
-##Here is the bash script that is run from the host:
+## Here is the bash script that is run from the host:
 #
 ##!/bin/bash
 #
-## Get the server's hostname
+## Get the server's hostname using 
+## AWS's Instance Metadata service static IP address 169.254.169.254
 #target_host=$(curl -s http://169.254.169.254/latest/meta-data/public-hostname)
 #
 ## Set the message variable
