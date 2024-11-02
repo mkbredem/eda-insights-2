@@ -20,10 +20,10 @@
             extra_vars: "{{ event.payload }}"
 
     - name: Capture and Log Message
-      condition: event.payload.message is defined
+      condition: event.payload is defined
       actions:
         - debug:
-            msg: "Received message: {{ event.message }}"
+            msg: "Received message: {{ event.payload }}"
 
     - name: Always Runs
       condition: True
