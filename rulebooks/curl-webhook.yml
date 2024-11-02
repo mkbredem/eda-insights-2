@@ -27,4 +27,4 @@
       condition: True
       actions:
         - debug:
-            msg: "You will always see me"
+            msg: "You will always see me {{ event.payload }}"
