@@ -20,13 +20,13 @@
 #        debug: 
 #          msg: "Subcategory is {{ event.payload.subcategory }}"
 #
-#    - name: Increase CPU on requested Node
-#      condition: event.payload.subcategory == "cpu"
-#      action:
-#        run_job_template:
-#          name: "Increase VM CPU"
-#          organization: Infrastructure
-#          job_args: 
-#            extra_vars: 
-#              vm_name: "{{ event.payload.u_vm_name }}"
-#              payload: "{{ event.payload }}"
+    - name: Increase CPU on requested Node
+      condition: event.payload.subcategory == "cpu"
+      action:
+        run_job_template:
+          name: "Increase VM CPU"
+          organization: Infrastructure
+          job_args: 
+            extra_vars: 
+              vm_name: "{{ event.payload.u_vm_name }}"
+              payload: "{{ event.payload }}"
