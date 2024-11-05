@@ -14,12 +14,12 @@
         debug: 
           var: event.payload
 
-#    - name: show subscategory
-#      condition: True
-#      action:
-#        debug: 
-#          msg: "Subcategory is {{ event.payload.subcategory }}"
-#
+    - name: show subscategory
+      condition: True
+      action:
+        debug: 
+          msg: "Subcategory is {{ event.payload.subcategory }}"
+
     - name: Increase CPU on requested Node
       condition: event.payload.subcategory == "cpu"
       action:
