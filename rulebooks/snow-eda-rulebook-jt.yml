@@ -8,7 +8,7 @@
         port: 5289
 
   rules:
-    - name: Output ServiceNow Information
+    - name: Output Snow Meta Information
       condition: event.meta is defined
       action:
         debug: 
