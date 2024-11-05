@@ -13,6 +13,12 @@
       action:
         debug: 
 
+    - name: show subscategory
+      condition: True
+      action:
+        debug: 
+          msg: "Subcategory is {{ event.payload.subcategory }}"
+
     - name: Output ServiceNow Information
       condition: event.payload.subcategory == "cpu"
       action:
@@ -20,4 +26,6 @@
           name: "Increase VM CPU"
           organization: Default
           job_args: 
-            extra_vars: "{{ event.payload }}"
+            extra_vars: 
+              vm_name: "{{ event.payload.u_vm_name }}"
+              payload: "{{ event.payload }}"
