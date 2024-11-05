@@ -13,7 +13,7 @@
       action:
         run_job_template:
           name: "Increase VM CPU"
-          organization: Infrastructure
+          organization: "Infrastructure"
           job_args: 
             extra_vars: 
               vm_name: "{{ event.payload.u_vm_name }}"
