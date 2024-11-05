@@ -18,7 +18,7 @@
       condition: True
       action:
         debug: 
-          msg: "Subcategory is {{ event.payload.subcategory }}"
+          var: event.payload.subcategory
 
     - name: Increase CPU on requested Node
       condition: event.payload.subcategory == "cpu"
