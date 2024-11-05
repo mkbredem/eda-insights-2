@@ -9,9 +9,10 @@
 
   rules:
     - name: Output Snow Meta Information
-      condition: event.meta is defined
+      condition: event.payload.subcategory == "cpu"
       action:
         debug: 
+          var: 
 
     - name: show subscategory
       condition: True
@@ -19,12 +20,12 @@
         debug: 
           msg: "Subcategory is {{ event.payload.subcategory }}"
 
-    - name: Output ServiceNow Information
+    - name: Increase CPU on requested Node
       condition: event.payload.subcategory == "cpu"
       action:
         run_job_template:
           name: "Increase VM CPU"
-          organization: Default
+          organization: Infrastructure
           job_args: 
             extra_vars: 
               vm_name: "{{ event.payload.u_vm_name }}"
