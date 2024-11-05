@@ -8,18 +8,6 @@
         port: 5289
 
   rules:
-    - name: Output Snow Meta Information
-      condition: event.payload.subcategory == "cpu"
-      action:
-        debug: 
-          var: event.payload
-
-    - name: show subscategory
-      condition: True
-      action:
-        debug: 
-          var: event.payload.subcategory
-
     - name: Increase CPU on requested Node
       condition: event.payload.subcategory == "cpu"
       action:
@@ -30,3 +18,4 @@
             extra_vars: 
               vm_name: "{{ event.payload.u_vm_name }}"
               payload: "{{ event.payload }}"
+
