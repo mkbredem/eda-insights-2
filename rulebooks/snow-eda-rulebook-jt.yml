@@ -1,0 +1,24 @@
+---
+- name: Listen for incidents on a webhook from ServiceNow
+  hosts: all
+  sources:
+    - name: Listen for alerts from ServiceNow
+      ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5289
+
+  rules:
+    - name: Output ServiceNow Information
+      condition: event.meta is defined
+      action:
+        debug: 
+          var: "{{ event.meta }}"
+          
+    - name: Output ServiceNow Information
+      condition: event.payload is defined
+      action:
+        run_job_template:
+          name: "Increase VM CPU"
+          organization: Default
+          job_args: 
+            extra_vars: "{{ event.payload }}"
