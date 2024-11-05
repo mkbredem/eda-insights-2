@@ -12,7 +12,7 @@
       condition: event.meta is defined
       action:
         debug: 
-          var: "{{ event.meta }}"
+          var: event.meta
 
     - name: Output ServiceNow Information
       condition: event.payload.subcategory == "cpu"
