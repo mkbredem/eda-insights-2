@@ -1,0 +1,23 @@
+---
+- name: Create a SNOW Incident
+  hosts: all
+
+  tasks:
+    - name: Create an incident in ServiceNow
+      servicenow.itsm.incident:
+        state: new
+        description: "{{ ansible_eda.ruleset | default(omit) }}"
+        short_description: "{{ ansible.eda.ansible_eda.ruleset }}"
+        caller: admin
+        urgency: "low"
+        impact: "low"
+        other:
+          u_operating_system: "windows"
+          u_ip_address: "192.168.1.1"
+          u_vm_name: "somehost.example.com"
+      register: new_incident
+      delegate_to: localhost
+    
+    - name: Display incident number
+      ansible.builtin.debug:
+        var: new_incident.record.number
