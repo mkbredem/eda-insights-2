@@ -12,7 +12,7 @@
       condition: event.url_check.status == "down"
       action: 
         run_job_template:
-          name: "mkbredem - Create a ServiceNow Ticket on Security Incident"
+          name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
           organization: "Infrastructure"
           extra_vars:
             description: "{{ event.meta.url_check }}"
