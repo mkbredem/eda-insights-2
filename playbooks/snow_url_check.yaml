@@ -7,7 +7,7 @@
       servicenow.itsm.incident:
         state: new
         description: "{{ ansible_eda.ruleset | default(omit) }}"
-        short_description: "{{ ansible.eda.ansible_eda.ruleset }}"
+        short_description: "{{ ansible_eda.ruleset }}"
         caller: admin
         urgency: "low"
         impact: "low"
