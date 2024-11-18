@@ -17,9 +17,8 @@
     - name: Create ServiceNow ticket if site is down and no incident exists
       condition: >
         event.url_check.status == "down" and
-        not facts.incidents.get(event.meta.url_check, False)
+        (event.meta.url_check not in facts.incidents or not facts.incidents[event.meta.url_check])
       action:
-        - debug:
         - run_job_template:
             name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
             organization: "Infrastructure"
