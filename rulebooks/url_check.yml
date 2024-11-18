@@ -8,35 +8,44 @@
         delay: 10
 
   rules:
-    - name: Initialize incident state
-      condition: True
-      action:
-        set_fact:
-          incidents: {}
-
     - name: Create ServiceNow ticket if site is down
-      condition: >
-        event.url_check.status == "down" and
-        event.meta.url_check not in facts.incidents
+      condition: event.url_check.status == "down" 
       actions:
-        - debug:
         - run_job_template:
             name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
             organization: "Infrastructure"
             extra_vars:
               description: "{{ event.meta.url_check }}"
-        - set_fact:
-            incidents: >
-              {{
-                facts.incidents | combine({event.meta.url_check: True})
-              }}
 
-    - name: Clear incident state if site is back up
-      condition: >
-        event.url_check.status == "up"
-      action:
-        set_fact:
-          incidents: >
-            {{
-              facts.incidents | combine({event.meta.url_check: False})
-            }}
+#    - name: Initialize incident state
+#      condition: True
+#      action:
+#        set_fact:
+#          incidents: {}
+
+#    - name: Create ServiceNow ticket if site is down
+#      condition: >
+#        event.url_check.status == "down" and
+#        event.meta.url_check not in facts.incidents
+#      actions:
+#        - debug:
+#        - run_job_template:
+#            name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
+#            organization: "Infrastructure"
+#            extra_vars:
+#              description: "{{ event.meta.url_check }}"
+#        - set_fact:
+#            incidents: >
+#              {{
+#                facts.incidents | combine({event.meta.url_check: True})
+#              }}
+
+#    - name: Clear incident state if site is back up
+#      condition: >
+#        event.url_check.status == "up"
+#      action:
+#        set_fact:
+#          incidents: >
+#            {{
+#              facts.incidents | combine({event.meta.url_check: False})
+#            }}
