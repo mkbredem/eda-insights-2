@@ -8,6 +8,11 @@
         delay: 10
   
   rules:
+    - name: Output urlcheck Information
+      condition: True
+      action:
+        debug:
+
     - name: Run Job
       condition: event.url_check.status == "down"
       action: 
@@ -16,3 +21,4 @@
           organization: "Infrastructure"
           extra_vars:
             description: "{{ event.meta.url_check }}"
+
