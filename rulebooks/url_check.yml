@@ -4,21 +4,39 @@
   sources:
     - ansible.eda.url_check:
         urls:
-          - https://datadog.shadowman.dev
+          - https://rhel8.shadowman.dev
         delay: 10
   
   rules:
-    - name: Output urlcheck Information
+    - name: Initialize incident state
       condition: True
       action:
-        debug:
+        set_fact:
+          incidents: {}
 
-    - name: Run Job
-      condition: event.url_check.status == "down"
-      action: 
-        run_job_template:
-          name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
-          organization: "Infrastructure"
-          extra_vars:
-            description: "{{ event.meta.url_check }}"
+    - name: Create ServiceNow ticket if site is down and no incident exists
+      condition: >
+        event.url_check.status == "down" and
+        not facts.incidents.get(event.meta.url_check, False)
+      action:
+        - run_job_template:
+            name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
+            organization: "Infrastructure"
+            extra_vars:
+              description: "{{ event.meta.url_check }}"
+        - set_fact:
+            incidents: >
+              {{
+                facts.incidents | combine({event.meta.url_check: True})
+              }}
 
+    - name: Clear incident state if site is back up
+      condition: >
+        event.url_check.status == "up" and
+        facts.incidents.get(event.meta.url_check, False)
+      action:
+        set_fact:
+          incidents: >
+            {{
+              facts.incidents | combine({event.meta.url_check: False})
+            }}
