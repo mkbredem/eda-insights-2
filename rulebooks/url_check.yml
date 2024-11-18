@@ -18,7 +18,7 @@
       condition: >
         event.url_check.status == "down" and
         event.meta.url_check not in facts.incidents
-      action:
+      actions:
         - debug:
         - run_job_template:
             name: "mbredeme - Create a ServiceNow Ticket on Security Incident"
