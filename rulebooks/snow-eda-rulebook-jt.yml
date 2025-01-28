@@ -12,7 +12,7 @@
       condition: event.payload.subcategory == "cpu"
       action:
         run_job_template:
-          name: "Increase VM CPU"
+          name: "Automated Response High CPU EDA"
           organization: "Infrastructure"
           job_args: 
             extra_vars: 
