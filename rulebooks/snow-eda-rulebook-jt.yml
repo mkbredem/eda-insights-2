@@ -12,10 +12,12 @@
       condition: event.payload.subcategory == "cpu"
       action:
         run_job_template:
-          name: "Automated Response High CPU EDA"
+          name: "mbredeme - Automated Response High CPU Service Now Incident"
           organization: "Infrastructure"
           job_args: 
             extra_vars: 
               vm_name: "{{ event.payload.u_vm_name }}"
+              ticket_number: "{{ event.payload.number }}"
+              comment: "Ansible Increasing CPU by core"
               payload: "{{ event.payload }}"
 
