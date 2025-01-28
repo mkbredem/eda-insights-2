@@ -19,5 +19,6 @@
               vm_name: "{{ event.payload.u_vm_name }}"
               ticket_number: "{{ event.payload.number }}"
               comment: "Ansible Increasing CPU by core"
+              snow_incident_link: "<placeholder for snow_incident_link> {{ event.payload.number }}"
               payload: "{{ event.payload }}"
 
