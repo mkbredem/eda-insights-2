@@ -19,6 +19,6 @@
               vm_name: "{{ event.payload.u_vm_name }}"
               ticket_number: "{{ event.payload.number }}"
               comment: "Ansible Increasing CPU by core"
-              snow_incident_link: "<placeholder for snow_incident_link> {{ event.payload.number }}"
+              snow_incident_link: "https://ven07619.service-now.com/nav_to.do?uri=incident.do?sysparm_query=number={{ event.payload.number }}"
               payload: "{{ event.payload }}"
 
