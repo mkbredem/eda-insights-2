@@ -19,6 +19,7 @@
               vm_name: "{{ event.payload.u_vm_name }}"
               ticket_number: "{{ event.payload.number }}"
               comment: "Ansible Increasing CPU by core"
+              close_code: Solved (Permanently)
               snow_incident_link: "https://ven07619.service-now.com/nav_to.do?uri=incident.do?sysparm_query=number={{ event.payload.number }}"
               payload: "{{ event.payload }}"
 
