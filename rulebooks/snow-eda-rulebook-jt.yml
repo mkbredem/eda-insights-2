@@ -11,7 +11,7 @@
     - name: Increase CPU on requested Node
       condition: event.payload.subcategory == "cpu"
       action:
-        run_job_template:
+        run_workflow_template:
           name: "mbredeme - Automated Response High CPU Service Now Incident"
           organization: "Infrastructure"
           job_args: 
