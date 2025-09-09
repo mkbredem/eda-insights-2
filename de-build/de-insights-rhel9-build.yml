@@ -1,0 +1,32 @@
+---
+# This successfully built the DE on a rhel9.6 server with ansible-builder
+
+version: 3
+
+images:
+  base_image:
+    name: 'registry.redhat.io/ansible-automation-platform-25/de-supported-rhel9:latest'
+
+dependencies:
+  galaxy:
+    collections:
+      - ansible.eda
+      - community.general
+      - redhat.insights_eda
+  python:
+    - six
+    - psutil
+    - aiohttp
+  system:
+    - iputils [platform:rpm]
+    - python3-pip
+    - pkgconf-pkg-config [platform:rpm]
+    - systemd-devel [platform:rpm]
+    - gcc [platform:rpm]
+    - python3.11-devel [platform:rpm]
+  python_interpreter:
+    python_path: "/usr/bin/python3.11"
+
+
+options:
+  package_manager_path: /usr/bin/microdnf
