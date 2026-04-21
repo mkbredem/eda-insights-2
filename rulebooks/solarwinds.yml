@@ -1,0 +1,14 @@
+---
+- name: Debug incoming event payload
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+
+  rules:
+    - name: Print full incoming payload
+      condition: event.payload is defined
+      action:
+        debug:
+          msg: "{{ event }}"
